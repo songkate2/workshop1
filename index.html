@@ -2,180 +2,97 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>내 소개 페이지</title>
-  <!-- 반응형 웹을 위한 meta 태그 (모바일 환경 고려) -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DALL·E 이미지 생성 테스트</title>
   <style>
-    /* 1) 전체 배경을 어두운 톤(#090909)으로 하고, 폰트는 예시로 'Lufga'를 사용 */
     body {
-      margin: 0;
-      padding: 0;
-      background-color: #090909;
-      font-family: 'Lufga', sans-serif; /* 실제로는 CDN/폰트파일 등을 추가해 주세요 */
-      color: #ffffff;
-    }
-
-    /* 2) 헤더영역 - 검정 바탕(black)에 붉은색(#BF0930) 테두리를 추가해 강조 */
-    header {
-      background: black;
-      border: 1px #BF0930 solid;
-      border-radius: 40px;
-      margin: 24px;
-      padding: 24px;
-      text-align: center;
-      position: relative; /* 배경효과나 장식을 넣으려 할 때 위치 설정 용이 */
-    }
-
-    header h1 {
-      color: #E11D48; /* 포인트 컬러로 붉은 기조(#E11D48) 사용 */
-      font-weight: 700;
-      font-size: 2.5rem;
-      margin: 0;
-      text-transform: uppercase; /* 대문자로 강조 */
-    }
-
-    /* 3) 메인 컨테이너: 살짝 반투명한 검정 박스 위에 콘텐트를 띄우는 느낌 */
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 24px;
-      background: rgba(255, 255, 255, 0.05); /* 배경을 약간 투명하게 */
-      border-radius: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(8px); /* 배경 블러 효과 */
-      position: relative; /* 필요 시 안쪽에 효과요소 추가 가능 */
-    }
-
-    /* 4) 소개 섹션 */
-    .intro {
-      text-align: center;
-      padding: 40px 0;
-      position: relative;
-    }
-
-    /* 프로필 이미지에 흰색 테두리, 그림자, 살짝 라운드 효과 */
-    .intro img {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid #E11D48;
-      box-shadow: 0 0 40px rgba(225, 29, 72, 0.4);
-      margin-bottom: 1rem;
-    }
-
-    .intro h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #FD853A; /* 주황색으로 포인트 */
-    }
-
-    .intro p {
-      line-height: 1.6;
-      color: #f3f3f3;
-      margin: 0 auto;
+      font-family: sans-serif;
+      margin: 20px auto;
       max-width: 600px;
     }
-
-    /* 5) 포트폴리오 섹션 - 카드 형태로 표현 */
-    .portfolio {
-      margin: 40px 0;
-    }
-
-    .portfolio h2 {
-      font-size: 1.8rem;
-      color: #E11D48;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      position: relative;
-    }
-    .portfolio h2::after {
-      content: "";
-      display: block;
-      width: 60px;
-      height: 3px;
-      background: #FD853A; 
-      margin-top: 8px;
-    }
-
-    /* 프로젝트 리스트 */
-    .portfolio ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .portfolio li {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px dashed #9747FF; /* 예시로 보라색 점선(#9747FF) */
-      border-radius: 20px;
-      padding: 20px;
-      margin-bottom: 20px;
-      position: relative;
-      transition: transform 0.2s ease, background 0.2s ease;
-    }
-
-    .portfolio li:hover {
-      background: rgba(255, 255, 255, 0.15);
-      transform: translateY(-4px);
-    }
-
-    .portfolio li h3 {
-      margin-top: 0;
-      color: #FD853A; 
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .portfolio li p {
-      margin: 0.5rem 0;
-      line-height: 1.4;
-    }
-
-    /* 6) 푸터 */
-    footer {
+    h1 {
       text-align: center;
-      color: #ffffff;
-      padding: 20px 0;
-      margin-top: 40px;
-      font-size: 0.875rem;
-      position: relative;
     }
-
-    /* 버튼 스타일 - 주황색(#FD853A) 둥근 버튼 */
-    .btn {
-      display: inline-block;
-      padding: 12px 28px;
-      background-color: #FD853A;
-      color: #fff;
-      font-size: 1rem;
-      border: none;
-      border-radius: 60px;
+    .form-group {
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
       cursor: pointer;
-      transition: background 0.2s ease;
-      text-decoration: none; /* a 태그일 경우 밑줄 제거 */
-      font-weight: 600;
     }
-    .btn:hover {
-      background-color: #e66e23;
+    #result {
+      margin-top: 20px;
+      text-align: center;
     }
-
-    /* 반응형 간단 처리 */
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      .intro img {
-        width: 120px;
-        height: 120px;
-      }
-      .intro h1 {
-        font-size: 1.5rem;
-      }
+    #generated-image {
+      max-width: 100%;
+      border: 1px solid #ccc;
+      margin-top: 10px;
     }
-
   </style>
 </head>
 <body>
-  <!-- 헤더영역 -->
-  <header>
-    <h1>My Portfo
+  <h1>DALL·E 이미지 생성</h1>
+
+  <div class="form-group">
+    <label for="prompt">이미지에 대한 설명을 입력하세요:</label>
+    <input type="text" id="prompt" placeholder="예: A futuristic cityscape at sunset" />
+  </div>
+
+  <button onclick="generateImage()">이미지 생성하기</button>
+
+  <div id="result"></div>
+
+  <script>
+    async function generateImage() {
+      const prompt = document.getElementById('prompt').value.trim();
+      const resultDiv = document.getElementById('result');
+      
+      if (!prompt) {
+        alert("프롬프트를 입력해주세요!");
+        return;
+      }
+
+      // 로딩 메시지 표시
+      resultDiv.innerHTML = "이미지를 생성 중입니다. 잠시만 기다려주세요...";
+
+      try {
+        // Cloudflare Worker의 "/api/generate" 엔드포인트로 요청
+        const response = await fetch("https://tiny-wave-4698.promind2461.workers.dev/api/generate", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ prompt })
+        });
+
+        if (!response.ok) {
+          throw new Error("DALL·E API 요청 실패: " + response.status);
+        }
+
+        const data = await response.json();
+
+        // Worker에서 받아온 이미지 URL
+        const imageUrl = data.imageUrl;
+
+        resultDiv.innerHTML = `
+          <p>입력하신 프롬프트: <strong>${prompt}</strong></p>
+          <img id="generated-image" src="${imageUrl}" alt="Generated Image" />
+        `;
+      } catch (error) {
+        console.error("이미지 생성 오류:", error);
+        resultDiv.innerHTML = `<p>오류가 발생했습니다: ${error.message}</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
